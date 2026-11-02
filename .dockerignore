@@ -1,0 +1,5 @@
+*
+!.docker/
+!.docker/Dockerfile
+!.docker/livesync.ini
+!.docker/init.sh
