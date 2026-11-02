@@ -30,6 +30,8 @@ services:
       dockerfile: .docker/Dockerfile
     restart: "on-failure:5"
     entrypoint: ["/bin/sh", "/usr/local/bin/livesync-init.sh"]
+    # Compartilha a rede do banco para não depender de DNS entre containers.
+    network_mode: service:couchdb
     depends_on:
       couchdb:
         condition: service_healthy

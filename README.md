@@ -73,6 +73,8 @@ Para executar novamente a criação dos bancos sem apagar dados:
 docker compose run --rm couchdb-init
 ```
 
+O init compartilha a rede do container CouchDB e acessa `127.0.0.1:5984`, sem depender da resolução DNS do nome `couchdb`. Se atualizar esta configuração, faça novo deploy com build para atualizar também o script na imagem. Não adicione um domínio ao serviço `couchdb-init`; o domínio deve apontar somente ao `couchdb`.
+
 Nomes de banco devem começar com letra minúscula e usar letras minúsculas, números ou `_ $ ( ) + -`. Alterar o nome cria outro banco; não migra o vault antigo. Se a porta 5984 estiver ocupada, altere `COUCHDB_PORT`. Em erros de inicialização, consulte os logs; não remova o volume como tentativa de reparo.
 
 ## Referências

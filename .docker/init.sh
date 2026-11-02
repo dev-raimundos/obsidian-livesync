@@ -14,7 +14,7 @@ for database in _users _replicator _global_changes "$db"; do
   status=$(curl --silent --show-error --connect-timeout 5 --max-time 30 \
     --user "${COUCHDB_USER}:${COUCHDB_PASSWORD}" \
     --output /tmp/livesync-init-response --write-out '%{http_code}' \
-    --request PUT "http://couchdb:5984/${database}")
+    --request PUT "http://127.0.0.1:5984/${database}")
   case "$status" in
     201|202) echo "Created: $database" ;;
     412) echo "Already exists: $database" ;;
